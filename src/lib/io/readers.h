@@ -48,6 +48,7 @@ ParticlesDataMutable* readPDC(	const char* filename,const bool headersOnly,std::
 ParticlesDataMutable* readPRT(	const char* filename,const bool headersOnly,std::ostream* errorStream);
 ParticlesDataMutable* readBIN(	const char* filename,const bool headersOnly,std::ostream* errorStream);
 ParticlesDataMutable* readPTS(  const char* filename,const bool headersOnly,std::ostream* errorStream);
+ParticlesDataMutable* readVTP(  const char* filename,const bool headersOnly,std::ostream* errorStream);
 
 bool writeBGEO(const char* filename,const ParticlesData& p,const bool compressed,std::ostream* errorStream);
 bool writeGEO(const char* filename,const ParticlesData& p,const bool compressed,std::ostream* errorStream);

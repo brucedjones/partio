@@ -1,23 +1,23 @@
 # PARTIO SOFTWARE
 # Copyright 2010 Disney Enterprises, Inc. All rights reserved
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-# 
+#
 # * Redistributions of source code must retain the above copyright
 # notice, this list of conditions and the following disclaimer.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 # notice, this list of conditions and the following disclaimer in
 # the documentation and/or other materials provided with the
 # distribution.
-# 
+#
 # * The names "Disney", "Walt Disney Pictures", "Walt Disney Animation
 # Studios" or the names of its contributors may NOT be used to
 # endorse or promote products derived from this software without
 # specific prior written permission from Walt Disney Pictures.
-# 
+#
 # Disclaimer: THIS SOFTWARE IS PROVIDED BY WALT DISNEY PICTURES AND
 # CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
 # BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS
@@ -103,10 +103,10 @@ SET( PARTIO_LIBRARIES partio ${ZLIB_LIBRARY} )
 # make it so partio can be found
 INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/src/lib )
 
-SET(SEEXPR_BASE "c:/aselle/seexpr-inst" CACHE STRING "path to SeExpr")
-SET(SEEXPR_INCLUDE_PATH ${SEEXPR_BASE}/include)
+SET(SEEXPR_BASE "/f/bruce/SeExpr/src/SeExpr/" CACHE STRING "path to SeExpr")
+SET(SEEXPR_INCLUDE_PATH ${SEEXPR_BASE})
 SET(SEEXPR_LIBDIR ${CMAKE_INSTALL_LIBDIR})
-SET(SEEXPR_LINK_PATH ${SEEXPR_BASE}/${SEEXPR_LIBDIR})
+SET(SEEXPR_LINK_PATH ${SEEXPR_BASE})
 SET(SEEXPR_LIBS "SeExpr")
 
 
@@ -116,5 +116,3 @@ ADD_SUBDIRECTORY (src/tools)
 ADD_SUBDIRECTORY (src/py)
 ADD_SUBDIRECTORY (src/tests)
 ADD_SUBDIRECTORY (src/doc)
-
-
