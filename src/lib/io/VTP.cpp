@@ -307,21 +307,20 @@ ParticlesDataMutable* readVTP(const char* filename, const bool headersOnly,std::
     vector<VTPDataArray> pData = readParticleData(filename);
     simple->addParticles(pData[0].size);
 
-    for(int attrIndex = 0; attrIndex < pData.size(); attrIndex++){
+    for(unsigned int attrIndex = 0; attrIndex < pData.size(); attrIndex++){
       ParticleAttribute attr;
       int numComponents = pData[attrIndex].numberOfComponents;
-			if(attrIndex==0)
-			{
-				attr = simple->addAttribute(pData[attrIndex].arrayName, VECTOR, numComponents);
-			}
+      if(attrIndex==0)
+      {
+          attr = simple->addAttribute(pData[attrIndex].arrayName, VECTOR, numComponents);
+      }
       else if(pData[attrIndex].type==NumberType::FLOAT32 || pData[attrIndex].type==NumberType::FLOAT64)
-			{
-        attr = simple->addAttribute(pData[attrIndex].arrayName, FLOAT, numComponents);
-			}
-      //else
-        //attr = simple->addAttribute(pData[attrIndex].arrayName, INT, numComponents);
+      {
+          attr = simple->addAttribute(pData[attrIndex].arrayName, FLOAT, numComponents);
+      }
+      else attr = simple->addAttribute(pData[attrIndex].arrayName, INT, numComponents);
 
-			if(pData[attrIndex].type==NumberType::FLOAT32)
+      if(pData[attrIndex].type==NumberType::FLOAT32)
       {
         float *data = (float *) pData[attrIndex].data;
         for(int partIndex = 0; partIndex < simple->numParticles(); partIndex++){
@@ -338,15 +337,15 @@ ParticlesDataMutable* readVTP(const char* filename, const bool headersOnly,std::
           }
         }
       }
-      //free(pData[attrIndex].data);
+      free(pData[attrIndex].data);
     }
 
-		// Add id attribute
-		ParticleAttribute attr;
-		attr = simple->addAttribute("id", INT, 1);
-		for(int partIndex = 0; partIndex < simple->numParticles(); partIndex++){
-			simple->dataWrite<int>(attr, partIndex)[0] = partIndex;
-		}
+    // Add id attribute
+    ParticleAttribute attr;
+    attr = simple->addAttribute("id", INT, 1);
+    for(int partIndex = 0; partIndex < simple->numParticles(); partIndex++){
+        simple->dataWrite<int>(attr, partIndex)[0] = partIndex;
+    }
 
     return simple;
 }
